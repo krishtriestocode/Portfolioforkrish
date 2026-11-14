@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Krishna Swain | CSE (AI & ML) Student</title>
+<meta name="description" content="Portfolio of Krishna Swain, B.Tech CSE (AI & ML) student at SRMIST, Chennai. C, Python, and a love of debugging.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cobalt:#2a2cf0; --paper:#f3f5f8; --ink:#101329; --pink:#ff7ab8; --mute:#5b6075;
+  --display:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;
+  --text:"Newsreader",Georgia,"Times New Roman",serif;
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:var(--text);font-size:1.2rem;line-height:1.65}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--pink);outline-offset:3px}
+.wrap{max-width:1100px;margin:0 auto;padding:0 1.5rem}
+
+/* Hero: the one bold moment */
+.hero{background:var(--cobalt);color:var(--paper);padding:1.5rem 0 3rem;min-height:92vh;display:flex;flex-direction:column}
+nav{display:flex;gap:1.5rem;flex-wrap:wrap;font-family:var(--display);font-size:1rem}
+nav a{text-decoration:none}
+nav a:hover{text-decoration:underline;text-underline-offset:4px}
+.hero .wrap{display:flex;flex-direction:column;flex:1;width:100%}
+.name{margin-top:auto;font-family:var(--display);font-weight:800;line-height:.86;letter-spacing:-.04em;font-size:clamp(4.2rem,19vw,15rem)}
+.name span{display:block;overflow:hidden}
+.name span i{display:block;font-style:normal;animation:rise .9s cubic-bezier(.2,.8,.2,1) both}
+.name span:nth-child(2) i{animation-delay:.12s;color:var(--pink)}
+@keyframes rise{from{transform:translateY(105%)}to{transform:none}}
+.tag{margin-top:1.5rem;font-family:var(--display);font-size:clamp(1.1rem,2.4vw,1.6rem);max-width:30ch}
+
+section{padding:5rem 0}
+h2{font-family:var(--display);font-weight:800;font-size:clamp(2rem,5vw,3.4rem);letter-spacing:-.03em;line-height:1.05;margin-bottom:2rem}
+.cols{display:grid;grid-template-columns:1fr 1.3fr;gap:3rem}
+.lead{font-family:var(--display);font-weight:800;font-size:clamp(1.6rem,3.4vw,2.4rem);line-height:1.15;letter-spacing:-.02em}
+.bio p+p{margin-top:1rem}
+.bio{max-width:60ch}
+
+/* Projects */
+.rows{border-top:3px solid var(--ink)}
+.row{display:grid;grid-template-columns:1.2fr 2fr auto;gap:1.5rem;align-items:baseline;padding:1.6rem 0;border-bottom:1px solid var(--ink);text-decoration:none}
+.row h3{font-family:var(--display);font-size:1.7rem;font-weight:800;letter-spacing:-.02em;line-height:1.1}
+.row p{color:var(--mute)}
+.row:hover h3{color:var(--cobalt)}
+.row .go{font-family:var(--display);font-weight:800}
+
+/* Skills */
+.skills{background:var(--ink);color:var(--paper)}
+.skills h2{color:var(--paper)}
+.skill-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:3rem}
+.skill-grid h3{font-family:var(--display);font-size:1.1rem;font-weight:800;color:var(--pink);margin-bottom:.6rem}
+.big{font-family:var(--display);font-weight:800;font-size:clamp(2.4rem,6vw,4rem);line-height:1.05;letter-spacing:-.03em}
+.skill-grid p{color:#c9ccdb}
+
+/* Education: a true sequence, so a timeline fits */
+.edu{list-style:none;padding:0;border-left:3px solid var(--cobalt);margin-left:.4rem}
+.edu li{padding:0 0 1.8rem 1.6rem;position:relative}
+.edu li::before{content:"";position:absolute;left:-.62rem;top:.55rem;width:1rem;height:1rem;background:var(--cobalt);border-radius:50%}
+.edu b{font-family:var(--display);font-size:1.25rem}
+.edu small{display:block;color:var(--mute);font-size:1rem}
+
+/* Contact */
+.contact{background:var(--cobalt);color:var(--paper)}
+.btn{display:inline-block;font-family:var(--display);font-weight:800;font-size:1.1rem;text-decoration:none;background:var(--pink);color:var(--ink);padding:.9rem 1.5rem;margin:.5rem 0 2.5rem}
+.btn:hover{background:var(--paper)}
+.links{display:flex;flex-wrap:wrap;gap:.6rem 2rem;font-family:var(--display);font-size:1.3rem}
+.mail{font-family:var(--display);font-weight:800;font-size:clamp(1.3rem,4.4vw,2.6rem);letter-spacing:-.02em;word-break:break-all;display:block;margin-top:.5rem}
+footer{background:var(--ink);color:#c9ccdb;padding:1.5rem 0;font-size:1rem}
+
+@media (max-width:760px){
+  .cols{grid-template-columns:1fr;gap:1.5rem}
+  .row{grid-template-columns:1fr;gap:.4rem}
+  section{padding:3.5rem 0}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .name span i{animation:none}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <nav aria-label="Main">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Resume &amp; contact</a>
+    </nav>
+    <h1 class="name" aria-label="Krishna Swain"><span><i>Krishna</i></span><span><i>Swain</i></span></h1>
+    <p class="tag">CSE (AI &amp; ML) student at SRMIST, Chennai.</p>
+  </div>
+</header>
+
+<main>
+  <section id="about">
+    <div class="wrap cols">
+      <p class="lead">I like finding out why code doesn’t work.</p>
+      <div class="bio">
+        <p>I’m Krishna, a B.Tech student in Computer Science Engineering with a specialization in AI &amp; ML at SRM Institute of Science and Technology, Chennai.</p>
+        <p>Debugging is my favorite part of programming. I enjoy tracing a problem back to its cause and fixing it properly. I write C and Python, and I practice problem solving on LeetCode.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" style="padding-top:0">
+    <div class="wrap">
+      <h2>Projects</h2>
+      <div class="rows">
+        <!-- To add a project, copy this whole <a> block, then change the title, description, tech and link. -->
+        <a class="row" href="https://github.com/krishtriestocode" target="_blank" rel="noopener">
+          <h3>Your first project</h3>
+          <p>Add a one-line description here: what it does, and the tech you used (for example, Python).</p>
+          <span class="go">View on GitHub</span>
+        </a>
+      </div>
+      <p style="margin-top:1.2rem;color:var(--mute)">More work lives on <a href="https://github.com/krishtriestocode" target="_blank" rel="noopener">my GitHub</a>.</p>
+    </div>
+  </section>
+
+  <section id="skills" class="skills">
+    <div class="wrap">
+      <h2>Skills</h2>
+      <div class="skill-grid">
+        <div>
+          <h3>Programming</h3>
+          <p class="big">C<br>Python</p>
+        </div>
+        <div>
+          <h3>Strengths</h3>
+          <p class="big">Debugging<br>Problem solving</p>
+        </div>
+        <div>
+          <h3>Languages I speak</h3>
+          <p class="big">English</p>
+          <p>Primary. I also speak Odia, Hindi and Tamil.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="wrap">
+      <h2>Education</h2>
+      <ol class="edu">
+        <li><b>B.Tech, Computer Science Engineering (AI &amp; ML)</b><small>SRM Institute of Science and Technology, 2025 to 2029</small></li>
+        <li><b>Senior Secondary (Class XII), Science (PCM + CS)</b><small>The Velammal International School, 2023 to 2025</small></li>
+        <li><b>Secondary School (Class X)</b><small>The Velammal International School, until 2023</small></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="wrap">
+      <h2>Resume &amp; contact</h2>
+      <a class="btn" href="Krishna_Swain_Resume.pdf" download>Download resume (PDF)</a>
+      <div class="links">
+        <a href="https://www.linkedin.com/in/krishna-swain-5a2269385/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/krishtriestocode" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://leetcode.com/u/krishnainsrm/" target="_blank" rel="noopener">LeetCode</a>
+      </div>
+      <a class="mail" href="mailto:krishnaswain278@gmail.com">krishnaswain278@gmail.com</a>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap">© <span id="yr">2026</span> Krishna Swain</div></footer>
+<script>document.getElementById("yr").textContent=new Date().getFullYear();</script>
+</body>
+</html>
