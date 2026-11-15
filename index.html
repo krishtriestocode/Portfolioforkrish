@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,170 +7,283 @@
 <meta name="description" content="Portfolio of Krishna Swain, B.Tech CSE (AI & ML) student at SRMIST, Chennai. C, Python, and a love of debugging.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;800&family=Manrope:wght@400;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --cobalt:#2a2cf0; --paper:#f3f5f8; --ink:#101329; --pink:#ff7ab8; --mute:#5b6075;
-  --display:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;
-  --text:"Newsreader",Georgia,"Times New Roman",serif;
+  --bg:#07060f; --txt:#ece9ff; --mute:#9a96c4; --glass:rgba(255,255,255,.06); --edge:rgba(255,255,255,.14);
+  --v:#8b5cf6; --c:#22d3ee; --p:#f472b6; --pc:"139,92,246";
+  --grad:linear-gradient(120deg,var(--v),var(--c) 50%,var(--p));
+  --disp:"Unbounded","Arial Black",sans-serif; --body:"Manrope","Segoe UI",Arial,sans-serif;
 }
+[data-theme=light]{--bg:#f5f3ff;--txt:#1a1533;--mute:#5d5880;--glass:rgba(255,255,255,.65);--edge:rgba(90,70,200,.18);--v:#6d3df0;--c:#0891b2;--p:#db2777;--pc:"109,61,240"}
 *{box-sizing:border-box;margin:0}
 html{scroll-behavior:smooth}
-body{background:var(--paper);color:var(--ink);font-family:var(--text);font-size:1.2rem;line-height:1.65}
+body{background:var(--bg);color:var(--txt);font-family:var(--body);line-height:1.7;font-size:1.05rem;overflow-x:hidden;transition:background .4s,color .4s}
 a{color:inherit}
-:focus-visible{outline:3px solid var(--pink);outline-offset:3px}
-.wrap{max-width:1100px;margin:0 auto;padding:0 1.5rem}
+:focus-visible{outline:3px solid var(--c);outline-offset:3px}
+.wrap{max-width:1100px;margin:0 auto;padding:0 1.4rem;position:relative;z-index:2}
+#bg{position:fixed;inset:0;z-index:0;pointer-events:none}
+.blob{position:fixed;border-radius:50%;filter:blur(90px);opacity:.38;z-index:0;pointer-events:none;will-change:transform}
+.b1{width:46vw;height:46vw;background:var(--v);top:-12vw;left:-10vw;animation:fl 14s ease-in-out infinite alternate}
+.b2{width:38vw;height:38vw;background:var(--c);top:40vh;right:-12vw;animation:fl 17s ease-in-out infinite alternate-reverse}
+.b3{width:34vw;height:34vw;background:var(--p);bottom:-12vw;left:25vw;animation:fl 19s ease-in-out infinite alternate}
+@keyframes fl{to{margin:6vh 5vw}}
+#bar{position:fixed;top:0;left:0;height:4px;width:100%;background:var(--grad);transform-origin:0 50%;transform:scaleX(0);z-index:50}
 
-/* Hero: the one bold moment */
-.hero{background:var(--cobalt);color:var(--paper);padding:1.5rem 0 3rem;min-height:92vh;display:flex;flex-direction:column}
-nav{display:flex;gap:1.5rem;flex-wrap:wrap;font-family:var(--display);font-size:1rem}
-nav a{text-decoration:none}
-nav a:hover{text-decoration:underline;text-underline-offset:4px}
-.hero .wrap{display:flex;flex-direction:column;flex:1;width:100%}
-.name{margin-top:auto;font-family:var(--display);font-weight:800;line-height:.86;letter-spacing:-.04em;font-size:clamp(4.2rem,19vw,15rem)}
-.name span{display:block;overflow:hidden}
-.name span i{display:block;font-style:normal;animation:rise .9s cubic-bezier(.2,.8,.2,1) both}
-.name span:nth-child(2) i{animation-delay:.12s;color:var(--pink)}
-@keyframes rise{from{transform:translateY(105%)}to{transform:none}}
-.tag{margin-top:1.5rem;font-family:var(--display);font-size:clamp(1.1rem,2.4vw,1.6rem);max-width:30ch}
+nav{position:fixed;top:.8rem;left:50%;transform:translateX(-50%);z-index:40;display:flex;gap:1.3rem;align-items:center;padding:.55rem 1.2rem;border-radius:99px;background:var(--glass);border:1px solid var(--edge);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);font-size:.92rem;white-space:nowrap}
+nav a{text-decoration:none;color:var(--mute);transition:color .2s}
+nav a:hover{color:var(--txt)}
+#tg{font:inherit;cursor:pointer;border:1px solid var(--edge);background:transparent;color:var(--txt);border-radius:99px;padding:.15rem .7rem}
+@media(max-width:640px){nav{gap:.8rem;font-size:.8rem;padding:.45rem .8rem}nav .hide{display:none}}
 
-section{padding:5rem 0}
-h2{font-family:var(--display);font-weight:800;font-size:clamp(2rem,5vw,3.4rem);letter-spacing:-.03em;line-height:1.05;margin-bottom:2rem}
-.cols{display:grid;grid-template-columns:1fr 1.3fr;gap:3rem}
-.lead{font-family:var(--display);font-weight:800;font-size:clamp(1.6rem,3.4vw,2.4rem);line-height:1.15;letter-spacing:-.02em}
-.bio p+p{margin-top:1rem}
-.bio{max-width:60ch}
+.hero{min-height:100vh;display:flex;align-items:center;padding:6rem 0 3rem}
+.eyebrow{display:inline-block;padding:.35rem .9rem;border-radius:99px;background:var(--glass);border:1px solid var(--edge);color:var(--mute);margin-bottom:1.4rem;font-size:.9rem}
+.name{font-family:var(--disp);font-weight:800;line-height:1;letter-spacing:-.04em;font-size:clamp(2.6rem,10.5vw,8rem);animation:hue 9s linear infinite}
+.name .w{display:block}
+.ch{display:inline-block;background:var(--grad);background-size:300% 100%;background-position:calc(var(--i)*9%) 0;-webkit-background-clip:text;background-clip:text;color:transparent;opacity:0;transform:translateY(60%) rotate(8deg);animation:pop .7s cubic-bezier(.2,.9,.3,1.3) forwards;animation-delay:calc(var(--i)*55ms + .2s)}
+@keyframes pop{to{opacity:1;transform:none}}
+@keyframes hue{50%{filter:hue-rotate(40deg)}}
+.role{font-family:var(--disp);font-size:clamp(1rem,2.6vw,1.6rem);margin:1.4rem 0 .6rem;min-height:2.2em}
+.role b{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.role i{display:inline-block;width:3px;height:1em;background:var(--c);margin-left:3px;vertical-align:-.12em;animation:bl 1s steps(1) infinite}
+@keyframes bl{50%{opacity:0}}
+.sub{color:var(--mute);max-width:46ch}
+.cta{display:flex;gap:.9rem;flex-wrap:wrap;margin-top:2rem}
+.btn{display:inline-block;text-decoration:none;font-weight:600;padding:.85rem 1.5rem;border-radius:99px;border:1px solid var(--edge);background:var(--glass);backdrop-filter:blur(10px);transition:transform .25s,box-shadow .25s}
+.btn.main{background:var(--grad);color:#fff;border-color:transparent}
+.btn:hover{transform:translateY(-3px);box-shadow:0 10px 30px -8px rgba(var(--pc),.7)}
 
-/* Projects */
-.rows{border-top:3px solid var(--ink)}
-.row{display:grid;grid-template-columns:1.2fr 2fr auto;gap:1.5rem;align-items:baseline;padding:1.6rem 0;border-bottom:1px solid var(--ink);text-decoration:none}
-.row h3{font-family:var(--display);font-size:1.7rem;font-weight:800;letter-spacing:-.02em;line-height:1.1}
-.row p{color:var(--mute)}
-.row:hover h3{color:var(--cobalt)}
-.row .go{font-family:var(--display);font-weight:800}
+.mq{overflow:hidden;border-block:1px solid var(--edge);background:var(--glass);padding:.9rem 0;position:relative;z-index:2;transform:rotate(-1.2deg);margin:1rem -2rem}
+.mq div{display:flex;gap:2.5rem;width:max-content;animation:mq 26s linear infinite;font-family:var(--disp);font-size:1.1rem;color:var(--mute)}
+@keyframes mq{to{transform:translateX(-50%)}}
 
-/* Skills */
-.skills{background:var(--ink);color:var(--paper)}
-.skills h2{color:var(--paper)}
-.skill-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:3rem}
-.skill-grid h3{font-family:var(--display);font-size:1.1rem;font-weight:800;color:var(--pink);margin-bottom:.6rem}
-.big{font-family:var(--display);font-weight:800;font-size:clamp(2.4rem,6vw,4rem);line-height:1.05;letter-spacing:-.03em}
-.skill-grid p{color:#c9ccdb}
+section{padding:6rem 0;position:relative;z-index:2}
+h2{font-family:var(--disp);font-size:clamp(1.8rem,5vw,3.2rem);letter-spacing:-.03em;line-height:1.1;margin-bottom:2rem}
+h2 em{font-style:normal;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.glass{background:var(--glass);border:1px solid var(--edge);border-radius:22px;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);padding:1.8rem}
+.rv{opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.8,.2,1);transition-delay:calc(var(--d,0)*120ms)}
+.rv.in{opacity:1;transform:none}
+.two{display:grid;grid-template-columns:1.3fr 1fr;gap:1.6rem}
+.two p+p{margin-top:1rem}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;text-align:center}
+.stat b{display:block;font-family:var(--disp);font-size:2.6rem;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1.1}
+.stat span{color:var(--mute);font-size:.92rem}
 
-/* Education: a true sequence, so a timeline fits */
-.edu{list-style:none;padding:0;border-left:3px solid var(--cobalt);margin-left:.4rem}
-.edu li{padding:0 0 1.8rem 1.6rem;position:relative}
-.edu li::before{content:"";position:absolute;left:-.62rem;top:.55rem;width:1rem;height:1rem;background:var(--cobalt);border-radius:50%}
-.edu b{font-family:var(--display);font-size:1.25rem}
-.edu small{display:block;color:var(--mute);font-size:1rem}
+.sk{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.6rem}
+.bar{margin:1rem 0}
+.bar div{display:flex;justify-content:space-between;font-weight:600;margin-bottom:.35rem}
+.bar i{display:block;height:10px;border-radius:9px;background:var(--edge);overflow:hidden}
+.bar i u{display:block;height:100%;width:0;border-radius:9px;background:var(--grad);transition:width 1.6s cubic-bezier(.2,.8,.2,1)}
+.chips{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:.8rem}
+.chips span{padding:.4rem .9rem;border-radius:99px;border:1px solid var(--edge);transition:transform .2s,border-color .2s}
+.chips span:hover{transform:translateY(-3px) scale(1.05);border-color:var(--c)}
 
-/* Contact */
-.contact{background:var(--cobalt);color:var(--paper)}
-.btn{display:inline-block;font-family:var(--display);font-weight:800;font-size:1.1rem;text-decoration:none;background:var(--pink);color:var(--ink);padding:.9rem 1.5rem;margin:.5rem 0 2.5rem}
-.btn:hover{background:var(--paper)}
-.links{display:flex;flex-wrap:wrap;gap:.6rem 2rem;font-family:var(--display);font-size:1.3rem}
-.mail{font-family:var(--display);font-weight:800;font-size:clamp(1.3rem,4.4vw,2.6rem);letter-spacing:-.02em;word-break:break-all;display:block;margin-top:.5rem}
-footer{background:var(--ink);color:#c9ccdb;padding:1.5rem 0;font-size:1rem}
+.pj{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1.6rem;perspective:1000px}
+.card{display:block;text-decoration:none;transition:transform .15s ease-out,box-shadow .3s;transform-style:preserve-3d}
+.card:hover{box-shadow:0 20px 50px -20px rgba(var(--pc),.8)}
+.card .no{font-family:var(--disp);font-size:3rem;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;opacity:.85}
+.card h3{font-family:var(--disp);font-size:1.15rem;margin:.4rem 0}
+.card p{color:var(--mute)}
+.tags{margin-top:.9rem;display:flex;gap:.5rem;flex-wrap:wrap;font-size:.8rem}
+.tags span{padding:.15rem .6rem;border-radius:99px;border:1px solid var(--edge)}
 
-@media (max-width:760px){
-  .cols{grid-template-columns:1fr;gap:1.5rem}
-  .row{grid-template-columns:1fr;gap:.4rem}
-  section{padding:3.5rem 0}
-}
-@media (prefers-reduced-motion:reduce){
-  html{scroll-behavior:auto}
-  .name span i{animation:none}
+.tl{position:relative;margin-left:.6rem;padding-left:2rem;--p:0}
+.tl::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--edge);border-radius:3px}
+.tl::after{content:"";position:absolute;left:0;top:0;width:3px;height:calc(var(--p)*100%);background:var(--grad);border-radius:3px}
+.tl .it{position:relative;margin-bottom:1.4rem}
+.tl .it::before{content:"";position:absolute;left:-2.45rem;top:1.9rem;width:14px;height:14px;border-radius:50%;background:var(--grad);box-shadow:0 0 0 6px var(--bg)}
+.tl small{color:var(--c);font-weight:600}
+.tl h3{font-family:var(--disp);font-size:1.05rem;margin:.2rem 0}
+.tl p{color:var(--mute)}
+
+.links{display:flex;flex-wrap:wrap;gap:.8rem;margin:1.4rem 0}
+.mail{font-family:var(--disp);font-size:clamp(1rem,3.4vw,1.8rem);word-break:break-all;text-decoration:none;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+footer{text-align:center;color:var(--mute);padding:2rem 0 3rem;position:relative;z-index:2;font-size:.9rem}
+
+#cd,#cr{position:fixed;top:0;left:0;pointer-events:none;z-index:100;border-radius:50%;display:none}
+#cd{width:8px;height:8px;background:var(--c);margin:-4px 0 0 -4px}
+#cr{width:38px;height:38px;border:2px solid var(--v);margin:-19px 0 0 -19px;transition:width .25s,height .25s,margin .25s,background .25s}
+#cr.h{width:64px;height:64px;margin:-32px 0 0 -32px;background:rgba(var(--pc),.14)}
+@media(hover:hover) and (pointer:fine){body.cur{cursor:none}body.cur a,body.cur button{cursor:none}#cd,#cr{display:block}}
+@media(max-width:760px){.two{grid-template-columns:1fr}section{padding:4rem 0}}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}*{animation:none!important}
+  .rv{opacity:1;transform:none;transition:none}.ch{opacity:1;transform:none}
+  .bar i u{transition:none}
 }
 </style>
 </head>
 <body>
+<div id="bar"></div>
+<canvas id="bg" aria-hidden="true"></canvas>
+<div class="blob b1" data-s=".05" aria-hidden="true"></div><div class="blob b2" data-s="-.07" aria-hidden="true"></div><div class="blob b3" data-s=".04" aria-hidden="true"></div>
+<div id="cd"></div><div id="cr"></div>
 
-<header class="hero">
-  <div class="wrap">
-    <nav aria-label="Main">
-      <a href="#about">About</a>
-      <a href="#projects">Projects</a>
-      <a href="#skills">Skills</a>
-      <a href="#contact">Resume &amp; contact</a>
-    </nav>
-    <h1 class="name" aria-label="Krishna Swain"><span><i>Krishna</i></span><span><i>Swain</i></span></h1>
-    <p class="tag">CSE (AI &amp; ML) student at SRMIST, Chennai.</p>
+<nav aria-label="Main">
+  <a href="#home">Home</a><a href="#about">About</a><a href="#skills" class="hide">Skills</a><a href="#projects">Projects</a><a href="#journey" class="hide">Journey</a><a href="#contact">Contact</a>
+  <button id="tg" aria-label="Toggle light and dark theme">☾</button>
+</nav>
+
+<header class="hero" id="home"><div class="wrap">
+  <span class="eyebrow">Hello, world. Welcome to my corner of the web.</span>
+  <h1 class="name" aria-label="Krishna Swain" id="nm"></h1>
+  <p class="role">I’m a <b id="ty"></b><i></i></p>
+  <p class="sub">B.Tech student in CSE (AI &amp; ML) at SRMIST, Chennai. I like tracing a bug back to its root and fixing it properly.</p>
+  <div class="cta">
+    <a class="btn main" href="#projects">See my work</a>
+    <a class="btn" href="Krishna_Swain_Resume.pdf" download>Download resume</a>
   </div>
-</header>
+</div></header>
+
+<div class="mq" aria-hidden="true"><div id="mq"></div></div>
 
 <main>
-  <section id="about">
-    <div class="wrap cols">
-      <p class="lead">I like finding out why code doesn’t work.</p>
-      <div class="bio">
-        <p>I’m Krishna, a B.Tech student in Computer Science Engineering with a specialization in AI &amp; ML at SRM Institute of Science and Technology, Chennai.</p>
-        <p>Debugging is my favorite part of programming. I enjoy tracing a problem back to its cause and fixing it properly. I write C and Python, and I practice problem solving on LeetCode.</p>
-      </div>
+<section id="about"><div class="wrap">
+  <h2 class="rv">A bit <em>about me</em></h2>
+  <div class="two">
+    <div class="glass rv" style="--d:1" data-par="-.02">
+      <p>I’m Krishna, a Computer Science Engineering student specializing in AI &amp; ML at SRM Institute of Science and Technology, Chennai.</p>
+      <p>Debugging is my favorite part of programming. I enjoy the detective work of finding out why something breaks, and I write C and Python to build and test my ideas. I also practice problem solving on LeetCode.</p>
     </div>
-  </section>
+    <div class="glass stats rv" style="--d:2">
+      <div class="stat"><b data-n="2">0</b><span>Programming languages</span></div>
+      <div class="stat"><b data-n="4">0</b><span>Languages spoken</span></div>
+      <div class="stat"><b data-n="2029">0</b><span>Graduating</span></div>
+      <div class="stat"><b data-n="100" data-suf="%">0</b><span>Love for debugging</span></div>
+    </div>
+  </div>
+</div></section>
 
-  <section id="projects" style="padding-top:0">
-    <div class="wrap">
-      <h2>Projects</h2>
-      <div class="rows">
-        <!-- To add a project, copy this whole <a> block, then change the title, description, tech and link. -->
-        <a class="row" href="https://github.com/krishtriestocode" target="_blank" rel="noopener">
-          <h3>Your first project</h3>
-          <p>You can checkout some of my boring ass projects.</p>
-          <span class="go">View on GitHub</span>
-        </a>
-      </div>
-      <p style="margin-top:1.2rem;color:var(--mute)">More work lives on <a href="https://github.com/krishtriestocode" target="_blank" rel="noopener">my GitHub</a>.</p>
+<section id="skills"><div class="wrap">
+  <h2 class="rv">My <em>skills</em></h2>
+  <div class="sk">
+    <div class="glass rv">
+      <h3 style="font-family:var(--disp);font-size:1.05rem">Programming</h3>
+      <!-- Edit the data-l numbers (0 to 100) to match how you feel about each skill. -->
+      <div class="bar"><div><span>C</span><span class="pc">0%</span></div><i><u data-l="75"></u></i></div>
+      <div class="bar"><div><span>Python</span><span class="pc">0%</span></div><i><u data-l="70"></u></i></div>
+      <div class="bar"><div><span>Debugging</span><span class="pc">0%</span></div><i><u data-l="90"></u></i></div>
+      <div class="bar"><div><span>Problem solving</span><span class="pc">0%</span></div><i><u data-l="65"></u></i></div>
     </div>
-  </section>
+    <div class="glass rv" style="--d:1">
+      <h3 style="font-family:var(--disp);font-size:1.05rem">Languages I speak</h3>
+      <div class="chips"><span>English (primary)</span><span>Odia</span><span>Hindi</span><span>Tamil</span></div>
+      <h3 style="font-family:var(--disp);font-size:1.05rem;margin-top:1.8rem">Focus areas</h3>
+      <div class="chips"><span>AI &amp; ML</span><span>Data structures</span><span>Competitive coding</span><span>Debugging</span></div>
+    </div>
+  </div>
+</div></section>
 
-  <section id="skills" class="skills">
-    <div class="wrap">
-      <h2>Skills</h2>
-      <div class="skill-grid">
-        <div>
-          <h3>Programming</h3>
-          <p class="big">C<br>Python</p>
-        </div>
-        <div>
-          <h3>Strengths</h3>
-          <p class="big">Debugging<br>Problem solving</p>
-        </div>
-        <div>
-          <h3>Languages I speak</h3>
-          <p class="big">English</p>
-          <p>Primary. I also speak Odia, Hindi and Tamil.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+<section id="projects"><div class="wrap">
+  <h2 class="rv">Selected <em>projects</em></h2>
+  <!-- To edit a project: change the title, description, tags and href. Copy a whole <a class="card"> block to add more. -->
+  <div class="pj">
+    <a class="card glass rv" href="https://github.com/krishtriestocode" target="_blank" rel="noopener"><div class="no">01</div><h3>Your first project</h3><p>Add a one-line description of what it does and why you built it.</p><div class="tags"><span>Python</span><span>Your tech</span></div></a>
+    <a class="card glass rv" style="--d:1" href="https://github.com/krishtriestocode" target="_blank" rel="noopener"><div class="no">02</div><h3>Your second project</h3><p>Maybe a C program, a small game, or a debugging tool you built.</p><div class="tags"><span>C</span><span>Your tech</span></div></a>
+    <a class="card glass rv" style="--d:2" href="https://leetcode.com/u/krishnainsrm/" target="_blank" rel="noopener"><div class="no">03</div><h3>Problem solving</h3><p>My practice on LeetCode. Click to see my profile.</p><div class="tags"><span>DSA</span><span>LeetCode</span></div></a>
+  </div>
+</div></section>
 
-  <section id="education">
-    <div class="wrap">
-      <h2>Education</h2>
-      <ol class="edu">
-        <li><b>B.Tech, Computer Science Engineering (AI &amp; ML)</b><small>SRM Institute of Science and Technology, 2025 to 2029</small></li>
-        <li><b>Senior Secondary (Class XII), Science (PCM + CS)</b><small>The Velammal International School, 2023 to 2025</small></li>
-        <li><b>Secondary School (Class X)</b><small>The Velammal International School, until 2023</small></li>
-      </ol>
-    </div>
-  </section>
+<section id="journey"><div class="wrap">
+  <h2 class="rv">My <em>journey</em></h2>
+  <div class="tl" id="tl">
+    <div class="it glass rv"><small>2023 to 2025</small><h3>Senior Secondary (Class XII), Science (PCM + CS)</h3><p>The Velammal International School</p></div>
+    <div class="it glass rv"><small>2025 to 2029</small><h3>B.Tech, Computer Science Engineering (AI &amp; ML)</h3><p>SRM Institute of Science and Technology, Chennai</p></div>
+    <div class="it glass rv"><small>Next</small><h3>Building, breaking and fixing things</h3><p>More projects, more problems solved, more bugs squashed.</p></div>
+  </div>
+</div></section>
 
-  <section id="contact" class="contact">
-    <div class="wrap">
-      <h2>Resume &amp; contact</h2>
-      <a class="btn" href="Krishna_Swain_Resume.pdf" download>Download resume (PDF)</a>
-      <div class="links">
-        <a href="https://www.linkedin.com/in/krishna-swain-5a2269385/" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="https://github.com/krishtriestocode" target="_blank" rel="noopener">GitHub</a>
-        <a href="https://leetcode.com/u/krishnainsrm/" target="_blank" rel="noopener">LeetCode</a>
-      </div>
-      <a class="mail" href="mailto:krishnaswain278@gmail.com">krishnaswain278@gmail.com</a>
+<section id="contact"><div class="wrap">
+  <div class="glass rv" style="text-align:center;padding:3rem 1.4rem">
+    <h2>Let’s <em>connect</em></h2>
+    <a class="mail" href="mailto:krishnaswain278@gmail.com">krishnaswain278@gmail.com</a>
+    <div class="links" style="justify-content:center">
+      <a class="btn main" href="Krishna_Swain_Resume.pdf" download>Download resume</a>
+      <a class="btn" href="https://www.linkedin.com/in/krishna-swain-5a2269385/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="https://github.com/krishtriestocode" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn" href="https://leetcode.com/u/krishnainsrm/" target="_blank" rel="noopener">LeetCode</a>
     </div>
-  </section>
+  </div>
+</div></section>
 </main>
+<footer>© <span id="yr">2026</span> Krishna Swain. Built with curiosity and a few fixed bugs.</footer>
 
-<footer><div class="wrap">© <span id="yr">2026</span> Krishna Swain</div></footer>
-<script>document.getElementById("yr").textContent=new Date().getFullYear();</script>
+<script>
+(function(){
+var d=document,$=function(s){return d.querySelector(s)},rm=matchMedia("(prefers-reduced-motion:reduce)").matches;
+d.getElementById("yr").textContent=new Date().getFullYear();
+d.body.classList.add("cur");
+
+/* theme */
+var root=d.documentElement,tg=$("#tg"),saved=null;
+try{saved=localStorage.getItem("theme")}catch(e){}
+function setT(t){root.setAttribute("data-theme",t);tg.textContent=t==="dark"?"☾":"☀";try{localStorage.setItem("theme",t)}catch(e){}}
+setT(saved||(matchMedia("(prefers-color-scheme:light)").matches?"light":"dark"));
+tg.onclick=function(){setT(root.getAttribute("data-theme")==="dark"?"light":"dark")};
+
+/* name letters */
+var nm=$("#nm"),i=0;
+["Krishna","Swain"].forEach(function(w){var s=d.createElement("span");s.className="w";s.setAttribute("aria-hidden","true");
+  w.split("").forEach(function(c){var k=d.createElement("span");k.className="ch";k.style.setProperty("--i",i++);k.textContent=c;s.appendChild(k)});nm.appendChild(s)});
+
+/* typewriter */
+var roles=["bug hunter","C & Python coder","AI & ML student","problem solver"],ty=$("#ty"),ri=0,ci=0,del=false;
+if(rm){ty.textContent=roles[0]}else{(function tick(){var r=roles[ri];ty.textContent=r.slice(0,ci);
+  if(!del&&ci===r.length){del=true;return setTimeout(tick,1400)}
+  if(del&&ci===0){del=false;ri=(ri+1)%roles.length}
+  ci+=del?-1:1;setTimeout(tick,del?40:85)})()}
+
+/* marquee */
+var kw=["Debugging","C","Python","AI & ML","Problem solving","SRMIST","LeetCode","Curiosity"],h="";
+for(var n=0;n<2;n++)kw.forEach(function(k){h+="<span>"+k+" ✦</span>"});$("#mq").innerHTML=h+h;
+
+/* reveal + counters + bars */
+function count(el){var t=+el.dataset.n,suf=el.dataset.suf||"",t0=null,big=t>1000;
+  (function f(ts){t0=t0||ts;var p=Math.min((ts-t0)/1600,1),e=1-Math.pow(1-p,3);
+    el.textContent=(big?Math.round(2000+(t-2000)*e):Math.round(t*e))+suf;if(p<1&&!rm)requestAnimationFrame(f);else el.textContent=t+suf})(0)}
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;var el=e.target;el.classList.add("in");
+  el.querySelectorAll("[data-n]").forEach(count);
+  el.querySelectorAll("[data-l]").forEach(function(u){var l=+u.dataset.l;u.style.width=l+"%";var pc=u.parentNode.previousElementSibling.querySelector(".pc"),a=0;
+    var iv=setInterval(function(){a+=2;if(a>=l){a=l;clearInterval(iv)}pc.textContent=a+"%"},rm?0:22)});
+  io.unobserve(el)})},{threshold:.2});
+d.querySelectorAll(".rv").forEach(function(e){io.observe(e)});
+
+/* scroll: progress, parallax, timeline */
+var bar=$("#bar"),blobs=d.querySelectorAll(".blob"),tl=$("#tl"),pars=d.querySelectorAll("[data-par]");
+function onS(){var y=scrollY,m=d.documentElement.scrollHeight-innerHeight;bar.style.transform="scaleX("+(m>0?y/m:0)+")";
+  if(!rm){blobs.forEach(function(b){b.style.transform="translateY("+y*b.dataset.s*-4+"px)"});
+    pars.forEach(function(p){p.style.translate="0 "+(y*p.dataset.par)+"px"})}
+  var r=tl.getBoundingClientRect(),p=Math.min(Math.max((innerHeight*.7-r.top)/r.height,0),1);tl.style.setProperty("--p",p)}
+addEventListener("scroll",onS,{passive:true});onS();
+
+/* card tilt */
+if(!rm&&matchMedia("(hover:hover)").matches)d.querySelectorAll(".card").forEach(function(c){
+  c.addEventListener("mousemove",function(e){var r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+    c.style.transform="rotateY("+x*12+"deg) rotateX("+(-y*12)+"deg) translateZ(8px)"});
+  c.addEventListener("mouseleave",function(){c.style.transform=""})});
+
+/* cursor */
+var cd=$("#cd"),cr=$("#cr"),mx=-100,my=-100,rx=-100,ry=-100;
+addEventListener("mousemove",function(e){mx=e.clientX;my=e.clientY});
+d.querySelectorAll("a,button").forEach(function(e){e.addEventListener("mouseenter",function(){cr.classList.add("h")});e.addEventListener("mouseleave",function(){cr.classList.remove("h")})});
+(function cur(){rx+=(mx-rx)*.18;ry+=(my-ry)*.18;cd.style.transform="translate("+mx+"px,"+my+"px)";cr.style.transform="translate("+rx+"px,"+ry+"px)";requestAnimationFrame(cur)})();
+
+/* particles */
+var cv=$("#bg"),cx=cv.getContext("2d"),W,H,P=[],pm={x:-999,y:-999};
+function rs(){W=cv.width=innerWidth;H=cv.height=innerHeight;var n=Math.min(90,Math.floor(W*H/16000));P=[];
+  for(var k=0;k<n;k++)P.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.5,vy:(Math.random()-.5)*.5})}
+rs();addEventListener("resize",rs);addEventListener("mousemove",function(e){pm.x=e.clientX;pm.y=e.clientY});
+function draw(){cx.clearRect(0,0,W,H);var c=getComputedStyle(root).getPropertyValue("--pc").trim().replace(/"/g,"");
+  for(var a=0;a<P.length;a++){var p=P[a];
+    if(!rm){p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1}
+    cx.fillStyle="rgba("+c+",.8)";cx.beginPath();cx.arc(p.x,p.y,1.8,0,6.3);cx.fill();
+    for(var b=a+1;b<P.length;b++){var q=P[b],dx=p.x-q.x,dy=p.y-q.y,dd=dx*dx+dy*dy;
+      if(dd<14400){cx.strokeStyle="rgba("+c+","+(.35*(1-dd/14400))+")";cx.beginPath();cx.moveTo(p.x,p.y);cx.lineTo(q.x,q.y);cx.stroke()}}
+    var mx2=p.x-pm.x,my2=p.y-pm.y,md=mx2*mx2+my2*my2;
+    if(md<22500){cx.strokeStyle="rgba(34,211,238,"+(.6*(1-md/22500))+")";cx.beginPath();cx.moveTo(p.x,p.y);cx.lineTo(pm.x,pm.y);cx.stroke()}}
+  if(!rm)requestAnimationFrame(draw)}
+draw();
+})();
+</script>
 </body>
 </html>
